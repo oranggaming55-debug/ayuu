@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.35), transparent 30%),
+        linear-gradient(180deg, #ff9ac7 0%, #ff6fa8 35%, #ffcf7d 100%);
+      position: relative;
+      color: white;
+    }
+
+    .confetti {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, #fff 1px, transparent 1px),
+        radial-gradient(circle, #ffd166 1px, transparent 1px),
+        radial-gradient(circle, #7dd3fc 1px, transparent 1px),
+        radial-gradient(circle, #fda4af 1px, transparent 1px);
+      background-size: 60px 60px, 80px 80px, 100px 100px, 120px 120px;
+      opacity: 0.35;
+      animation: drift 12s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(60px); }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 56px;
+      height: 70px;
+      border-radius: 50% 50% 45% 45%;
+      animation: floatUp linear infinite;
+      opacity: 0.95;
+      box-shadow: inset -8px -10px 18px rgba(0,0,0,0.12);
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 68px;
+      width: 2px;
+      height: 90px;
+      background: rgba(255,255,255,0.8);
+      transform: translateX(-50%);
+    }
+
+    .balloon::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      width: 14px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transform: rotate(-18deg);
+    }
+
+    .b1 { left: 8%;  background: #ff5d8f; animation-duration: 9s; }
+    .b2 { left: 20%; background: #ffd166; animation-duration: 11s; animation-delay: 1s; }
+    .b3 { left: 36%; background: #7dd3fc; animation-duration: 10s; animation-delay: 2s; }
+    .b4 { left: 55%; background: #a78bfa; animation-duration: 12s; animation-delay: 0.5s; }
+    .b5 { left: 72%; background: #34d399; animation-duration: 10.5s; animation-delay: 1.5s; }
+    .b6 { left: 88%; background: #fb7185; animation-duration: 11.5s; animation-delay: 2.2s; }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+      25%  { transform: translateY(-220px) translateX(10px) rotate(4deg); }
+      50%  { transform: translateY(-480px) translateX(-8px) rotate(-4deg); }
+      75%  { transform: translateY(-760px) translateX(12px) rotate(3deg); }
+      100% { transform: translateY(-1050px) translateX(0) rotate(0deg); }
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 34px 28px;
+      max-width: 520px;
+      margin: 20px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+      transform: scale(0.75);
+      opacity: 0;
+      animation: popIn 1s ease forwards;
+    }
+
+    @keyframes popIn {
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      animation: fadeUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      animation: fadeUp 1s ease 0.7s forwards;
+      opacity: 0;
+    }
+
+    .from {
+      margin-top: 14px;
+      font-size: 1rem;
+      font-style: italic;
+      animation: fadeUp 1s ease 1s forwards;
+      opacity: 0;
+    }
+
+    .cake {
+      font-size: 3rem;
+      margin: 16px 0 8px;
+      animation: bounce 1.8s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 12px rgba(255,255,255,0.9);
+      opacity: 0.8;
+      animation: twinkle 2.5s ease-in-out infinite;
+    }
+
+    .s1 { top: 14%; left: 12%; }
+    .s2 { top: 20%; left: 80%; animation-delay: .5s; }
+    .s3 { top: 78%; left: 18%; animation-delay: 1s; }
+    .s4 { top: 72%; left: 84%; animation-delay: 1.5s; }
+
+    @keyframes twinkle {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.6); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti"></div>
+
+  <div class="balloon b1"></div>
+  <div class="balloon b2"></div>
+  <div class="balloon b3"></div>
+  <div class="balloon b4"></div>
+  <div class="balloon b5"></div>
+  <div class="balloon b6"></div>
+
+  <div class="sparkle s1"></div>
+  <div class="sparkle s2"></div>
+  <div class="sparkle s3"></div>
+  <div class="sparkle s4"></div>
+
+  <div class="card">
+    <div class="cake">🎂</div>
+    <h1>Selamat Ulang Tahun!</h1>
+    <p>
+      Selamat ulang tahun ke <b>Ayu Praciska</b>.<br>
+      Semoga di hari spesial ini, Ayu selalu diberi kesehatan, kebahagiaan,
+      panjang umur, dan semua harapan yang diinginkan bisa tercapai dengan baik.
+    </p>
+    <div class="from">— dari Nadif</div>
+  </div>
+</body>
+</html>
